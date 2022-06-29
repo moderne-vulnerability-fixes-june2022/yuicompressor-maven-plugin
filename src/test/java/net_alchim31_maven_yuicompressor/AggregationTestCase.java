@@ -6,6 +6,7 @@ import org.codehaus.plexus.util.FileUtils;
 import org.sonatype.plexus.build.incremental.DefaultBuildContext;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -16,9 +17,7 @@ public class AggregationTestCase extends TestCase {
 
     @Override
     protected void setUp() throws Exception {
-        dir_ = File.createTempFile(this.getClass().getName(), "-test");
-        dir_.delete();
-        dir_.mkdirs();
+        dir_ = Files.createTempDirectory(this.getClass().getName() + "-test").toFile();
     }
 
     @Override
